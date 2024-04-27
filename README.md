@@ -1,5 +1,5 @@
 # Introduction to Facial Recognition in Python
-This project is meant tp provide an introduction to the deepface python library for doing facial recognition,by providing sample python code, data, and instructions on how to use the scripts.
+This project is meant to provide an introduction to the deepface python library for doing facial recognition,by providing sample python code, data, and instructions on how to use the scripts.
 ## Background
 Deepface is a lightweight face recognition and facial attribute analysis (age, gender, emotion and race) framework for python. It is a hybrid face recognition framework wrapping state-of-the-art models: VGG-Face, Google FaceNet, OpenFace, Facebook DeepFace, DeepID, ArcFace, Dlib, SFace and GhostFaceNet.
 
