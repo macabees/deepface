@@ -5,22 +5,23 @@ import sys
 
 # Checks to make sure two image paths as arguments were passed
 # Define help message
-help_text = """
+mport requests
+HELP_TEXT = """
 Error:   This script requires two image paths be passed  as arguments.
 Usage:   python facial_verification.py <image_path1> <image_path2>
 Example: python facil_verification.py image1.jpg image2.png
 """
 # Check for correct number of arguments
 if len(sys.argv) != 3:
-    print(help_text)
-    exit()
+    print(HELP_TEXT)
+    sys.exit()
 
 # Function: Flatten Nested Dictionary
 def flatten_dict(dd, separator ='_', prefix =''):
-  return { prefix + separator + k if prefix else k : v
-           for kk, vv in dd.items()
-           for k, v in flatten_dict(vv, separator, kk).items()
-           } if isinstance(dd, dict) else { prefix : dd }
+    return { prefix + separator + k if prefix else k : v
+        for kk, vv in dd.items()
+        for k, v in flatten_dict(vv, separator, kk).items()
+        } if isinstance(dd, dict) else { prefix : dd }
 
 # Imports the Deepface library later because it takes time to initialize
 from deepface import DeepFace
@@ -37,5 +38,5 @@ verifyResults = DeepFace.verify(img1_path = imagePath1, img2_path = imagePath2)
 outputResults = flatten_dict(verifyResults)
 # Display the flatten nested dictionary
 for key, value in outputResults.items():
-  print("-",key,"=",value)
+    print("-",key,"=",value)
 

@@ -5,22 +5,22 @@ import sys
 
 # Checks to make sure the arguments were passed.
 # Define help message
-help_text = """
+HELP_TEXT = """
 Error:   This script requires two parameters (image and dir) paths as arguments.
 Usage:   python find_related_images.py <image_path> <dir_path>
 Example: python find_related_images.py image.jpg ./image_dir/
 """
 # Check for correct number of arguments
 if len(sys.argv) != 3:
-    print(help_text)
-    exit()
+    print(HELP_TEXT)
+    sys.exit()
 
 # Function: Flatten Nested Dictionary
 def flatten_dict(dd, separator ='_', prefix =''):
-  return { prefix + separator + k if prefix else k : v
-           for kk, vv in dd.items()
-           for k, v in flatten_dict(vv, separator, kk).items()
-           } if isinstance(dd, dict) else { prefix : dd }
+    return { prefix + separator + k if prefix else k : v
+        for kk, vv in dd.items()
+        for k, v in flatten_dict(vv, separator, kk).items()
+         } if isinstance(dd, dict) else { prefix : dd }
 
 # Imports the Deepface library later because it takes time to initialize
 from deepface import DeepFace
@@ -39,4 +39,4 @@ verifyResults = DeepFace.find(img_path = imagePath, db_path = imageDir)
 outputResults = flatten_dict(verifyResults)
 # Display the flatten nested dictionary
 for key, value in outputResults.items():
-  print("-",key,"=",value)
+    print("-",key,"=",value)
